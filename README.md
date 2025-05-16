@@ -4,12 +4,12 @@
   
   # 🦉 Open-source real-time notetaking & todo app 🔄⚡️🚀
 
-  [![Release](https://img.shields.io/github/release/owlistic-notes/helm-charts?style=flat-square)](https://github.com/owlistic-notes/helm-charts/releases/latest)
-  [![Docs](https://img.shields.io/badge/docs-online-blue.svg?style=flat-square)](https://owlistic-notes.github.io/owlistic/docs/category/overview)
-  [![License](https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)](LICENSE)
-  [![standard-readme](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+  [![Release](https://img.shields.io/github/release/owlistic-notes/helm-charts)](https://github.com/owlistic-notes/helm-charts/releases/latest)
+  [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://owlistic-notes.github.io/owlistic/docs/category/overview)
+  [![License](https://img.shields.io/badge/license-GPLv3-blue.svg)](LICENSE)
+  [![standard-readme](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
 
-  [![Activity](https://img.shields.io/github/commit-activity/m/badges/shields)](https://github.com/owlistic-notes/helm-charts/pulse)
+  [![Activity](https://img.shields.io/github/commit-activity/m/owlistic-notes/helm-charts)](https://github.com/owlistic-notes/helm-charts/pulse)
 
 </div>
 
