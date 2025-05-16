@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="src/frontend/assets/logo/owlistic-w-text.png" width="400px" />
+  <img src="https://raw.githubusercontent.com/owlistic-notes/owlistic/main/src/frontend/assets/logo/owlistic-w-text.png" width="400px" />
   
   # 🦉 Open-source real-time notetaking & todo app 🔄⚡️🚀
 
