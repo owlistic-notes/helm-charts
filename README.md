@@ -1,5 +1,3 @@
-# Owlistic Charts
-
 <div align="center">
 
   <img src="https://raw.githubusercontent.com/owlistic-notes/owlistic/main/src/frontend/assets/logo/owlistic-w-text.png" width="400px" />
@@ -15,7 +13,7 @@
 
 </div>
 
-This repo contains helm charts the owlistic community developed to help deploy [Owlistic](https://github.com/owlistic-notes/owlistic) on Kubernetes cluster. It leverages the bjw-s [Common Library](https://bjw-s-labs.github.io/helm-charts/docs/common-library/) chart.
+This repo contains helm charts to deploy [Owlistic](https://github.com/owlistic-notes/owlistic) on Kubernetes cluster. It leverages the bjw-s [Common Library](https://bjw-s-labs.github.io/helm-charts/docs/common-library/) chart.
 
 ## Table of Contents
 
