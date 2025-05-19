@@ -2,7 +2,7 @@ server:
   enabled: true
   image:
     repository: ghrc.io/owlistic-notes/owlistic
-    tag: "latest"
+    tag: "0.1.0"
   service:
     enabled: true
     type: ClusterIP
@@ -26,7 +26,7 @@ app:
   enabled: true
   image:
     repository: ghrc.io/owlistic-notes/owlistic-app
-    tag: "latest"
+    tag: "0.1.0"
   service:
     enabled: true
     type: ClusterIP
