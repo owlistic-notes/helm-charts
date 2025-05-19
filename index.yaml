@@ -2,6 +2,32 @@ apiVersion: v1
 entries:
   owlistic:
   - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-05-19T07:55:39.154869095Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s-labs.github.io/helm-charts
+      version: 4.0.1
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.0.0
+    - condition: zookeeper.enabled
+      name: zookeeper
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.8.2
+    - condition: kafka.enabled
+      name: kafka
+      repository: https://charts.bitnami.com/bitnami
+      version: 32.2.5
+    description: Owlistic Helm Chart
+    digest: 785ed7487fdd86473f6bcc88c685a0dd4c5df85848162d2780a0980b2a1c6c47
+    name: owlistic
+    type: application
+    urls:
+    - https://github.com/owlistic-notes/helm-charts/releases/download/owlistic-0.1.0/owlistic-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 0.0.1
     created: "2025-05-16T21:33:55.837174187Z"
     dependencies:
@@ -27,4 +53,4 @@ entries:
     urls:
     - https://github.com/owlistic-notes/owlistic-helm/releases/download/owlistic-0.0.1/owlistic-0.0.1.tgz
     version: 0.0.1
-generated: "2025-05-16T21:33:55.837196228Z"
+generated: "2025-05-19T07:55:39.154887038Z"
