@@ -12,7 +12,7 @@ env:
 server:
   enabled: true
   image:
-    repository: ghrc.io/owlistic-notes/owlistic
+    repository: ghcr.io/owlistic-notes/owlistic
     pullPolicy: IfNotPresent
     tag: 0.1.1
   service:
@@ -30,7 +30,7 @@ server:
 app:
   enabled: true
   image:
-    repository: ghrc.io/owlistic-notes/owlistic-app
+    repository: ghcr.io/owlistic-notes/owlistic-app
     pullPolicy: IfNotPresent
     tag: 0.1.1
   service:
