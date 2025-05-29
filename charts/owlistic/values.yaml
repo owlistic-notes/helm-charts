@@ -13,7 +13,7 @@ server:
     tag: "0.1.1"
   persistence:
     data:
-      enabled: false
+      enabled: true
       size: 8Gi
       accessMode: ReadWriteOnce
       storageClassName: "-"
@@ -24,7 +24,7 @@ server:
     port: 8080
 
 app:
-  enabled: false
+  enabled: true
   image:
     repository: ghcr.io/owlistic-notes/owlistic-app
     pullPolicy: IfNotPresent
@@ -35,7 +35,7 @@ app:
     port: 80
 
 postgresql:
-  enabled: false
+  enabled: true
   global:
     postgresql:
       auth:
@@ -44,10 +44,10 @@ postgresql:
         database: owlistic
 
 zookeeper:
-  enabled: false
+  enabled: true
 
 kafka:
-  enabled: false
+  enabled: true
   extraEnvVars:
     - name: KAFKA_BROKER_ID
       value: "1"
