@@ -7,6 +7,7 @@ env:
   KAFKA_BROKER: "kafka:9092"
 
 server:
+  enabled: true
   image:
     repository: ghcr.io/owlistic-notes/owlistic
     pullPolicy: IfNotPresent
@@ -17,13 +18,14 @@ server:
     port: 8080
   persistence:
     data:
-      enabled: true
-      # size: 8Gi
-      # accessMode: ReadWriteOnce
-      # storageClass: "-"
+      enabled: false
+      size: 8Gi
+      storageClassName: "-"
+      accessMode: ReadWriteOnce
       existingClaim: ""
 
 app:
+  enabled: true
   image:
     repository: ghcr.io/owlistic-notes/owlistic-app
     pullPolicy: IfNotPresent

@@ -13,8 +13,8 @@ controllers:
           repository: {{ .Values.server.image.repository }}
           pullPolicy: {{ .Values.server.image.pullPolicy }}
           tag: {{ .Values.server.image.tag }}
-    env:
-"{{ .Values.env | toYaml | indent 6}}"
+        env:
+{{- .Values.env | toYaml | indent 10 }}
 
 service:
   server:
@@ -30,11 +30,13 @@ service:
 persistence:
   data:
     enabled: {{ .Values.server.persistence.data.enabled }}
+    {{- if .Values.server.persistence.data.enabled }}
     type: persistentVolumeClaim
     accessMode: {{ .Values.server.persistence.data.enabled }}
     size: {{ .Values.server.persistence.data.size }}
     storageClass: {{ .Values.server.persistence.data.storageClass }}
     existingClaim: {{ .Values.server.persistence.data.existingClaim }}
+    {{- end }}
 
 ingress:
   {}
