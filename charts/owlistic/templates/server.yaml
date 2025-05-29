@@ -1,3 +1,81 @@
+{{- define "owlistic.server.values" }}
+global:
+  nameOverride: server
+
+controllers:
+  server:
+    enabled: true
+    type: deployment
+    replicas: 1
+    containers:
+      server:
+        image:
+          repository: {{ .Values.server.image.repository }}
+          pullPolicy: {{ .Values.server.image.pullPolicy }}
+          tag: {{ .Values.server.image.tag }}
+    
+service:
+  server:
+    enabled: {{ .Values.server.service.enabled }}
+    controller: server
+    type: {{ .Values.server.service.type }}
+    ports:
+      http:
+        enabled: true
+        port: {{ .Values.server.service.port }}
+        protocol: HTTP
+
+persistence:
+  data:
+    enabled: {{ .Values.server.persistence.data.enabled }}
+    type: persistentVolumeClaim
+    accessMode: {{ .Values.server.persistence.data.enabled }}
+    size: {{ .Values.server.persistence.data.size }}
+    storageClass: {{ .Values.server.persistence.data.storageClass }}
+    existingClaim: {{ .Values.server.persistence.data.existingClaim }}
+
+ingress:
+  {}
+  # server:
+  #   enabled: true
+  #   className:
+  #   defaultBackend:
+  #   hosts:
+  #       host: owlistic.local
+  #       paths:
+  #         - # -- Path.  Helm template can be passed.
+  #           path: /
+  #           pathType: Prefix
+  #           service:
+  #             name: main
+  #             identifier: main
+  #             port:
+  #   tls: []
+
+route:
+  # server:
+  #   enabled: false
+  #   kind: HTTPRoute
+  #   parentRefs:
+  #     - # Group of the referent resource.
+  #       group: gateway.networking.k8s.io
+  #       kind: Gateway
+  #       name:
+  #       namespace:
+  #       sectionName:
+
+  #   hostnames: []
+
+  #   rules:
+  #     - # -- Configure backends where matching requests should be sent.
+  #       backendRefs: []
+  #       matches:
+  #         - path:
+  #             type: PathPrefix
+  #             value: /
+
+{{ end }}
+
 {{- $ctx := deepCopy . -}}
 {{- $_ := get .Values "server" | mergeOverwrite $ctx.Values -}}
 {{- $_ = include "owlistic.server.values" . | fromYaml | merge $ctx.Values -}}

@@ -1,3 +1,72 @@
+{{- define "owlistic.app.values" }}
+global:
+  nameOverride: app
+
+controllers:
+  app:
+    enabled: true
+    type: deployment
+    replicas: 1
+    containers:
+      app:
+        image:
+          repository: {{ .Values.app.image.repository }}
+          pullPolicy: {{ .Values.app.image.pullPolicy }}
+          tag: {{ .Values.app.image.tag }}
+    
+service:
+  app:
+    enabled: {{ .Values.app.service.enabled }}
+    controller: app
+    type: {{ .Values.app.service.type }}
+    ports:
+      http:
+        enabled: true
+        port: {{ .Values.app.service.port }}
+        protocol: HTTP
+
+ingress:
+  {}
+  # owlistic:
+  #   enabled: true
+  #   className:
+  #   defaultBackend:
+  #   hosts:
+  #       host: owlistic.local
+  #       paths:
+  #         - # -- Path.  Helm template can be passed.
+  #           path: /
+  #           pathType: Prefix
+  #           service:
+  #             name: main
+  #             identifier: main
+  #             port:
+  #   tls: []
+
+route:
+  # owlistic:
+  #   enabled: false
+  #   kind: HTTPRoute
+  #   parentRefs:
+  #     - # Group of the referent resource.
+  #       group: gateway.networking.k8s.io
+  #       kind: Gateway
+  #       name:
+  #       namespace:
+  #       sectionName:
+
+  #   hostnames: []
+
+  #   rules:
+  #     - # -- Configure backends where matching requests should be sent.
+  #       backendRefs: []
+  #       matches:
+  #         - path:
+  #             type: PathPrefix
+  #             value: /
+
+{{ end }}
+
 {{- $ctx := deepCopy . -}}
 {{- $_ := get .Values "app" | mergeOverwrite $ctx.Values -}}
 {{- $_ = include "owlistic.app.values" . | fromYaml | merge $ctx.Values -}}
