@@ -1,31 +1,30 @@
-env:
-  DB_HOST: "postgresql"
-  DB_PORT: "5432"
-  DB_NAME: "owlistic"
-  DB_USER: "owlistic"
-  DB_PASSWORD: "owlistic"
-  KAFKA_BROKER: "kafka:9092"
-
 server:
   enabled: true
+  env:
+    DB_HOST: "postgresql"
+    DB_PORT: "5432"
+    DB_NAME: "owlistic"
+    DB_USER: "owlistic"
+    DB_PASSWORD: "owlistic"
+    KAFKA_BROKER: "kafka:9092"
   image:
     repository: ghcr.io/owlistic-notes/owlistic
     pullPolicy: IfNotPresent
     tag: "0.1.1"
-  service:
-    enabled: true
-    type: ClusterIP
-    port: 8080
   persistence:
     data:
       enabled: false
       size: 8Gi
-      storageClassName: "-"
       accessMode: ReadWriteOnce
-      existingClaim: ""
+      storageClassName: "-"
+      # existingClaim: ""
+  service:
+    enabled: true
+    type: ClusterIP
+    port: 8080
 
 app:
-  enabled: true
+  enabled: false
   image:
     repository: ghcr.io/owlistic-notes/owlistic-app
     pullPolicy: IfNotPresent
@@ -36,7 +35,7 @@ app:
     port: 80
 
 postgresql:
-  enabled: true
+  enabled: false
   global:
     postgresql:
       auth:
@@ -45,10 +44,10 @@ postgresql:
         database: owlistic
 
 zookeeper:
-  enabled: true
+  enabled: false
 
 kafka:
-  enabled: true
+  enabled: false
   extraEnvVars:
     - name: KAFKA_BROKER_ID
       value: "1"

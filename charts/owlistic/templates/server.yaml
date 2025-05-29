@@ -14,7 +14,7 @@ controllers:
           pullPolicy: {{ .Values.server.image.pullPolicy }}
           tag: {{ .Values.server.image.tag }}
         env:
-{{- .Values.env | toYaml | indent 10 }}
+          {{ .Values.server.env | toYaml | nindent 10 }}
 
 service:
   server:
