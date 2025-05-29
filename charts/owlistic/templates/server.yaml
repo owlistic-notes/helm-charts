@@ -13,7 +13,9 @@ controllers:
           repository: {{ .Values.server.image.repository }}
           pullPolicy: {{ .Values.server.image.pullPolicy }}
           tag: {{ .Values.server.image.tag }}
-    
+    env:
+"{{ .Values.env | toYaml | indent 6}}"
+
 service:
   server:
     enabled: {{ .Values.server.service.enabled }}
