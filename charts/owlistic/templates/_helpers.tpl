@@ -2,6 +2,8 @@
 global:
   nameOverride: server
 
+env: {}
+
 controllers:
   owlistic:
     enabled: true
@@ -11,10 +13,8 @@ controllers:
       owlistic:
         image:
           repository:  {{ .Values.server.image.repository }}
+          pullPolicy: {{ .Values.server.image.pullPolicy }}
           tag: {{ .Values.server.image.tag }}
-          pullPolicy: IfNotPresent
-        env:
-          {{ .Values.server.env | toYaml | indent 10 }}
 
 service:
   owlistic:
@@ -26,46 +26,6 @@ service:
         enabled: true
         port: {{ .Values.server.service.port }}
         protocol: HTTP
-
-ingress:
-  {}
-  # owlistic:
-  #   enabled: true
-  #   className:
-  #   defaultBackend:
-  #   hosts:
-  #       host: owlistic.local
-  #       paths:
-  #         - # -- Path.  Helm template can be passed.
-  #           path: /
-  #           pathType: Prefix
-  #           service:
-  #             name: main
-  #             identifier: main
-  #             port:
-  #   tls: []
-
-route:
-  # owlistic:
-  #   enabled: false
-  #   kind: HTTPRoute
-  #   parentRefs:
-  #     - # Group of the referent resource.
-  #       group: gateway.networking.k8s.io
-  #       kind: Gateway
-  #       name:
-  #       namespace:
-  #       sectionName:
-
-  #   hostnames: []
-
-  #   rules:
-  #     - # -- Configure backends where matching requests should be sent.
-  #       backendRefs: []
-  #       matches:
-  #         - path:
-  #             type: PathPrefix
-  #             value: /
 
 persistence:
   data:
@@ -87,14 +47,12 @@ controllers:
     type: deployment
     replicas: 1
     containers:
-      owlistic:
+      owlistic-app:
         image:
           repository: {{ .Values.app.image.repository }}
+          pullPolicy: {{ .Values.app.image.pullPolicy }}
           tag: {{ .Values.app.image.tag }}
-          pullPolicy: IfNotPresent
-        env:
-        envFrom: []
-
+    
 service:
   owlistic-app:
     enabled: {{ .Values.app.service.enabled }}
@@ -105,45 +63,5 @@ service:
         enabled: true
         port: {{ .Values.app.service.port }}
         protocol: HTTP
-
-ingress:
-  {}
-  # owlistic:
-  #   enabled: true
-  #   className:
-  #   defaultBackend:
-  #   hosts:
-  #       host: owlistic.local
-  #       paths:
-  #         - # -- Path.  Helm template can be passed.
-  #           path: /
-  #           pathType: Prefix
-  #           service:
-  #             name: main
-  #             identifier: main
-  #             port:
-  #   tls: []
-
-route:
-  # owlistic:
-  #   enabled: false
-  #   kind: HTTPRoute
-  #   parentRefs:
-  #     - # Group of the referent resource.
-  #       group: gateway.networking.k8s.io
-  #       kind: Gateway
-  #       name:
-  #       namespace:
-  #       sectionName:
-
-  #   hostnames: []
-
-  #   rules:
-  #     - # -- Configure backends where matching requests should be sent.
-  #       backendRefs: []
-  #       matches:
-  #         - path:
-  #             type: PathPrefix
-  #             value: /
 
 {{ end }}
