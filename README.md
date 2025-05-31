@@ -33,14 +33,14 @@ A complete list of possible values can be found in Common Library [values.yaml](
 ## Install
 
 ```
-$ helm install --create-namespace --namespace owlistic owlistic oci://ghcr.io/owlistic-notes/helm-charts/owlistic -f values.yaml
+$ helm install --create-namespace --namespace owlistic owlistic https://owlistic-notes.github.io/helm-charts/owlistic -f values.yaml
 ```
 
 You should not copy the full values.yaml from this repository. Only set the values that you want to override.
 
 There are a few things that you are required to configure in your values.yaml before installing the chart:
 - You need to separately create a PVC for your data volume and configure `owlistic.persistence.data.existingClaim` to reference that PVC
-- You need to make sure that Owlistic has access to a kafka and postgresql instance. Both can be enabled directly in the `values.yaml`, or by manually setting the `env` to point to an existing instance.
+- You need to make sure that Owlistic has access to a Nats-server and postgresql instance. Both can be enabled directly in the `values.yaml`, or by manually setting the `env` to point to an existing instance.
 
 ## Uninstall
 
